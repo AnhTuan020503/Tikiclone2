@@ -1,86 +1,75 @@
 import React from "react";
-import { StyleSheet, Text, View,SafeAreaView,ScrollView,StatusBar,Image, Dimensions,TextInput,TouchableOpacity } from 'react-native';
-const{width} = Dimensions.get('window');
+import { StyleSheet, Text, View, ScrollView, Image, Dimensions } from 'react-native';
+
 const item_image = require('../asset/samsung-galaxy-s22-ultra-5g-cu-2.jpg');
 const section_banner = require('../asset/Logo_Tiki.png');
-const item_image2=require('../asset/vn-galaxy-s23-s918-446906-sm-s918bzrbxxv-thumb-534877307.webp');
-const ProductItem=({image,name,price}) =>(
-    <View style={styles.itemContainer}>
-      <Image source={image} style={styles.itemimage}/>  
-      <Text style={styles.textName} numberOfLines={2}>
-        {name}
-      </Text>
-      <Text style={styles.text}>{price}</Text>
-    </View>
-  
-  );
-  const HomeSectionComponent =() =>{
-    return(
-        <View style={styles.sectionContainer}>
-        <Text style={styles.sectionTitle}>Dien Thoai - May Tinh bang</Text>
-        <Image style={styles.sectionImage}
-             source={section_banner}/>
-      {/*  */}
+const item_image2 = require('../asset/vn-galaxy-s23-s918-446906-sm-s918bzrbxxv-thumb-534877307.webp');
+
+const ProductItem = ({ image, name, price }) => (
+  <View style={styles.itemContainer}>
+    <Image source={image} style={styles.itemimage}/>  
+    <Text style={styles.textName} numberOfLines={2}>
+      {name}
+    </Text>
+    <Text style={styles.text}>{price}</Text>
+  </View>
+);
+
+const HomeSectionComponent = () => {
+  return (
+    <View style={styles.sectionContainer}>
+      <Text style={styles.sectionTitle}>Dien Thoai - May Tinh bang</Text>
+      <Image style={styles.sectionImage} source={section_banner}/>
       <ScrollView horizontal={true}>
         <View style={styles.filterContainer}>
-          { /*  */}
           {[
             'Tat ca ',
             'Dien thoai SmartPhone',
             'May tinh bang ',
             'Dien Thoai',
-          ].map((e,index) =>(
+          ].map((e, index) => (
             <View 
-            key ={index.toString()}
-            style={ index ===0
-              ? styles.filterActiveButtonContainer
-              : styles.filterInActiveButtonContainer
-            }>
-            <Text style={ index ===0
-              ? styles.filterActiveText
-              : styles.filterInActiveText}>{e}</Text>
-          </View>
+              key={index.toString()}
+              style={index === 0 ? styles.filterActiveButtonContainer : styles.filterInActiveButtonContainer}
+            >
+              <Text style={index === 0 ? styles.filterActiveText : styles.filterInActiveText}>{e}</Text>
+            </View>
           ))}
-          
-         
         </View>
       </ScrollView>
-      {/* Danh sach dien thoai*/}
       <ScrollView horizontal={true}>
-      <View style={styles.listItemContainer}>
-        {[
-          {image1 : item_image,image1:item_image},
-          {image1 : item_image,image1:item_image},
-          {image2 : item_image2,image2:item_image2},
-          {image2 : item_image2,image2:item_image2},
-        ].map((e) =>(
-          <View>
-          <ProductItem
-            name="SamSung galaxy s23 ultra"
-            image={item_image}
-            price="23.000.000"
-          />
-      
-        {/* */}
-        <ProductItem
-            name="SamSung galaxy s23 ultra"
-            image={item_image2}
-            price="23.000.000"
-          />
-          </View>
-        ))}
-        
-      </View>
+        <View style={styles.listItemContainer}>
+          {[
+            {image1: item_image, image2: item_image},
+            {image1: item_image, image2: item_image},
+            {image1: item_image2, image2: item_image2},
+            {image1: item_image2, image2: item_image2},
+          ].map((e, index) => (
+            <View key={index.toString()}>
+              <ProductItem
+                name="SamSung galaxy s23 ultra"
+                image={e.image1}
+                price="23.000.000"
+              />
+              <ProductItem
+                name="SamSung galaxy s23 ultra"
+                image={e.image2}
+                price="23.000.000"
+              />
+            </View>
+          ))}
+        </View>
       </ScrollView>
       <View style={styles.seeMoreContainer}>
-        <Text style={styles.seeMoreText}> Xem them san pham</Text>
+        <Text style={styles.seeMoreText}>Xem them san pham</Text>
       </View>
     </View>
-    );
+  );
 };
+
 const styles =StyleSheet.create({
     sectionContainer:{
-        backgroundColor: 'fff',
+        backgroundColor: '#fff',
         paddingHorizontal:10,
         
       },
